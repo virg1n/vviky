@@ -1,7 +1,7 @@
-# presentations
+# vviky
+Connecting GPT model with Stable Dissuion XL for creating presentations by prompt
+you can see demo in this link: https://vviky.com
+
 python launch.py --nowebui
+cd slides-parser
 .\venv\Scripts\activate
-https://app.baseten.co/models
-https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features#stable-diffusion-20
-https://docs.google.com/document/d/18IIM24t7AOFPWaR5TetV2DpPzZ9z7tcA36zq5fDx2cc/edit
-https://towardsdatascience.com/stable-diffusion-as-an-api-5e381aec1f6
