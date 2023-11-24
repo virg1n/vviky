@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/css/menu.css">
+  <link rel="stylesheet" href="../static/css/loader.css">
+  <link rel="stylesheet" href="../static/css/card.css">
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #000;
+      min-height: 100vh;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      display: flex;
+    }
+
+    input {
+      background: 0;
+      border: 0;
+      outline: none;
+      width: 80vw;
+      max-width: 400px;
+      font-size: 1.5em;
+      transition: padding 0.3s 0.2s ease;
+      color: #fff;
+    }
+
+    input:focus {
+      padding-bottom: 5px;
+    }
+
+    .field {
+      position: relative;
+    }
+
+    .line {
+      width: 100%;
+      height: 3px;
+      position: absolute;
+      bottom: -8px;
+      background: #bdc3c7;
+    }
+
+    .line:after {
+      content: " ";
+      position: absolute;
+      float: right;
+      width: 100%;
+      height: 3px;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      background: #1abc9c;
+    }
+
+    @media screen and (max-width: 10000px) {
+      .form_div {
+        margin: auto;
+        max-width: 500px;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .form_div {
+        margin: 50px;
+      }
+    }
+
+    details {
+      position: relative;
+      width: 300px;
+      margin-right: 1rem;
+    }
+
+    details[open] {
+      z-index: 1;
+    }
+
+    summary {
+      padding: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      background-color: #ddd;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details[open] summary:before {
+      content: '';
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      background: transparent;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    summary:after {
+      content: '';
+      display: inline-block;
+      float: right;
+      width: .5rem;
+      height: .5rem;
+      border-bottom: 1px solid currentColor;
+      border-left: 1px solid currentColor;
+      border-bottom-left-radius: 2px;
+      transform: rotate(45deg) translate(50%, 0%);
+      transform-origin: center center;
+      transition: transform ease-in-out 100ms
+    }
+
+    summary:focus {
+      outline: none;
+    }
+
+    details[open] summary:after {
+      transform: rotate(-45deg) translate(0%, 0%);
+    }
+
+    ul {
+      width: 100%;
+      background: #ddd;
+      position: absolute;
+      top: calc(100% + .5rem);
+      left: 0;
+      padding: 1rem;
+      margin: 0;
+      box-sizing: border-box;
+      border-radius: 5px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    li {
+      margin: 0;
+      padding: 1rem 0;
+      border-bottom: 1px solid #ccc;
+    }
+
+    li:first-child {
+      padding-top: 0;
+    }
+
+    li:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    /* FAKE SELECT */
+
+    summary.radios {
+      counter-reset: radios;
+    }
+
+    summary.radios:before {
+      content: var(--selection);
+    }
+
+    input[type=radio] {
+      counter-increment: radios;
+      appearance: none;
+      display: none;
+    }
+
+    input[type=radio]:checked {
+      display: inline;
+      --display: block;
+    }
+
+    input[type=radio]:after {
+      content: attr(title);
+      display: inline;
+      font-size: 1rem;
+    }
+
+    ul.list {
+      counter-reset: labels;
+    }
+
+    label {
+      width: 100%;
+      display: flex;
+      cursor: pointer;
+      justify-content: space-between;
+    }
+
+    label span {
+      --display: none;
+      display: var(--display);
+      width: 1rem;
+      height: 1rem;
+      border: 1px solid #727272;
+      border-radius: 3px;
+    }
+
+    #colorlib-page {
+      display: flex;
+    }
+
+    header {
+      width: 100%;
+      margin-left: 15px;
+    }
+
+    .colorlib-table {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .colorlib-navbar-brand {
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    #loadingg,
+    #final_presentation {
+      margin: auto;
+      text-align: center;
+    }
+
+    #loadingg h1,
+    #final_presentation h1 {
+      color: #fff;
+    }
+
+    .card {
+      width: 308px;
+      margin: auto;
+    }
+
+    .card__img {
+      width: 100%;
+    }
+
+    .card__footer {
+      display: block;
+      width: 100%;
+    }
+
+    .card__action {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+    <nav id="colorlib-main-nav" role="navigation">
+        <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle active"><i></i></a>
+        <div class="js-fullheight colorlib-table">
+          <div class="img" style="background-image: url(images/bg_3.jpg);"></div>
+          <div class="colorlib-table-cell js-fullheight">
+            <div class="row no-gutters">
+              <div class="col-md-12 text-center">
+                <h1 class="mb-4"><a href="index.html" class="logo">Company Logo</a></h1>
+                <ul>
+                  <li ><a href="profile"><span>Recent Presentations</span></a></li>
+                  <li class="active"><a href="create"><span>Create</span></a></li>
+                  <li><a href="./"><span>Home Page</span></a></li>
+                  <li><a href="logout"><span>Logout</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+      <div id="colorlib-page">
+        <header>
+            <div class="container">
+              <div class="colorlib-navbar-brand">
+                <a class="colorlib-logo" href="index.html"></a>
+              </div>
+              <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+          </div>
+        </header>
+      </div>
+      <div style="align-items: center;">
+        <div style="max-width: 500px;" class="form_div">
+            <!-- <form> -->
+                <div class="field" style="margin-top: 150px;">
+                    <input (type="text", placeholder="What's your topic?") name="topic" id="topic_input">
+                    <div class="line"></div>
+                </div>
+                <div class="field" style="margin-top: 50px;">
+                    {% if NAME %}
+                    <input (type="text", placeholder="What's your name?", value={{NAME}} ), name="username" id="name_input">
+                    {% else %}
+                    <input (type="text", placeholder="What's your name?"), name="username" id="name_input">
+                    {% endif %}
+                    
+                    <div class="line"></div>
+                </div>
+                <div class="field" style="margin-top: 50px; width: 40%;">
+                    <h3 style="color: white;">Slides: <output id="value" style="color: white;"></output></h3>
+                    <input type="range" id="cowbell" name="slides" min="2" max="9" value="6" step="1" />
+                    <!-- <div class="line"></div> -->
+                </div>
+                <!-- <input id="generate" type="submit" value="Generate"/> -->
+                <button id="generate" style="margin-top: 30px;width: 100%;" class="w-full font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5">Generate</button>
+                
+            <!-- </form>  -->
+    
+        </div>
+      </div>
+          <div style=" margin:auto;display: none; text-align: center;" id="loadingg">
+            <h1 style="color: #fff;">We are preparing your presentation...</h1>
+            <div>
+                <span class="loader" style="margin-top: 50px;"></span>
+            </div>
+          </div>
+    
+          <!-- ..\static\presentations\LOLLL.pptx -->
+          <a href="" download="GFG" id="download_presentation">
+            <div style=" margin:auto;display: none; text-align: center;" id="final_presentation">
+              <h1 style="color: #fff;">Your presentation is done, you can download it by click on this button:</h1>
+              <div class="card" style="width: 308px; margin: auto;">
+                <div style="width: 100%;">
+                    <img src='' alt="Click for download" class="card__img" id="card__img">
+                    <span class="card__footer">
+                    <span>Download</span>
+                    </span>
+                </div>
+                <div style="width: 100%;">
+                    <span class="card__action">
+                    <svg viewBox="0 0 448 512" title="play">
+                        <path d="M12 4v8H8.828l3.586 3.586L13 17l-5-5l5-5l1.414 1.414L8.828 12H12z"/>
+                    </svg>
+                    </span>
+                </div>
+            </div>
+            </div>
+          </a>
+      </div>
+    </body>
+    </html>
+    
+</body>
+</html>

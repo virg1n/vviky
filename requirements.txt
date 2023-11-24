@@ -1,0 +1,6 @@
+wheel
+baseten
+pypptx
+flask
+Flask-Login
+six

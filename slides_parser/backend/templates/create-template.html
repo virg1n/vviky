@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    /> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="../static/css/menu.css">
+  <link rel="stylesheet" href="../static/css/loader.css">
+  <link rel="stylesheet" href="../static/css/card.css">
+	<link rel="icon" href="static/images/for_index/vLogo.jpg" type="image/x-icon">
+
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>body {
+        background: #000;
+        min-height: 100vh;
+        /* margin: 0; */
+        /* display: flex; */
+        justify-content: center;
+        align-items: center;
+      }
+      
+      input {
+        background: 0;
+        border: 0;
+        outline: none;
+        width: 80vw;
+        max-width: 400px;
+        font-size: 1.5em;
+        transition: padding 0.3s 0.2s ease;
+        color: #fff;
+      
+        &:focus {
+          padding-bottom: 5px;
+        }
+      
+        /* // sibling magic ;o */
+        &:focus + .line {
+          &:after {
+            transform: scaleX(1);
+          }
+        }
+      }
+      
+      .field {
+        position: relative;
+      
+        .line {
+          width: 100%;
+          height: 3px;
+          position: absolute;
+          bottom: -8px;
+          background: #bdc3c7;
+      
+          &:after {
+            content: " ";
+            position: absolute;
+            float: right;
+            width: 100%;
+            height: 3px;
+            
+            transform: scalex(0);
+            transition: transform 0.3s ease;
+            
+            background: #1abc9c;
+          }
+        }
+      }
+      
+   @media screen and (max-width: 10000px) {
+      .form_div {
+         margin:auto;
+      }
+   }
+   @media screen and (max-width: 600px) {
+      .form_div {
+         margin:50px;
+      }
+   }
+
+   
+      </style>
+</head>
+<body>
+  <nav id="colorlib-main-nav" role="navigation">
+    <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle active"><i></i></a>
+    <div class="js-fullheight colorlib-table">
+      <div class="img" style="background-image: url(images/bg_3.jpg);"></div>
+      <div class="colorlib-table-cell js-fullheight">
+        <div class="row no-gutters">
+          <div class="col-md-12 text-center">
+            <h1 class="mb-4"><a href="index.html" class="logo">vviky</a></h1>
+            <ul>
+              <li ><a href="profile"><span>Recent Presentations</span></a></li>
+              <li class="active"><a href="create"><span>Create</span></a></li>
+              <li><a href="./"><span>Home Page</span></a></li>
+              <li><a href="logout"><span>Logout</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <div id="colorlib-page">
+    <header>
+        <div class="container">
+          <div class="colorlib-navbar-brand">
+            <a class="colorlib-logo" href="index.html"></a>
+            
+          </div>
+          <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+      </div>
+    </header>
+  </div>
+  <div style="align-items: center;">
+    <div style="max-width: 500px;" class="form_div">
+        <!-- <form> -->
+            <div class="field" style="margin-top: 150px;">
+                <input (type="text", placeholder="What's your topic?") name="topic" id="topic_input" autocomplete="off" autocorrect="off" autocapitalize="off">
+                <div class="line"></div>
+            </div>
+            <div class="field" style="margin-top: 50px;">
+                {% if NAME %}
+                <input (type="text", placeholder="What's your name?", value={{NAME}} ), name="username" id="name_input">
+                {% else %}
+                <input (type="text", placeholder="What's your name?"), name="username" id="name_input">
+                {% endif %}
+                
+                <div class="line"></div>
+            </div>
+            <div class="field" style="margin-top: 50px; width: 40%;">
+                <h3 style="color: white;">Slides: <output id="value" style="color: white;"></output> </h3>
+                <input type="range" id="cowbell" name="slides" min="2" max="9" value="6" step="1" />
+                <!-- <div class="line"></div> -->
+            </div>
+            <div>
+              <h2 style="color: white;">Theme for presentation: </h2>
+              <input type="radio" id="contactChoice1" name="contact" value="black" style="width: 3vh;" checked>
+              <label for="contactChoice1">Black</label>
+            
+              <input type="radio" id="contactChoice2" name="contact" value="white" style="width: 3vh;">
+              <label for="contactChoice2">White</label>
+            </div>
+            
+            <!-- <input id="generate" type="submit" value="Generate"/> -->
+            <button id="generate" style="margin-top: 30px;width: 100%;" class="w-full font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5">Generate</button>
+            
+        <!-- </form>  -->
+
+    </div>
+    
+  </div>
+      <div style=" margin:auto;display: none; text-align: center;" id="loadingg">
+        <h1 style="color: #fff;">We are preparing your presentation...</h1>
+        <div>
+            <span class="loader" style="margin-top: 50px;"></span>
+        </div>
+      </div>
+
+      <!-- ..\static\presentations\LOLLL.pptx -->
+      <a href="" download="GFG" id="download_presentation">
+        <div style=" margin:auto;display: none; text-align: center;" id="final_presentation">
+          <h1 style="color: #fff;">Your presentation is done, you can download it by click on this button:</h1>
+          <div class="card" style="width: 308px; margin: auto;">
+            <div style="width: 100%;">
+                <img src='' alt="Click for download" class="card__img" id="card__img">
+                <span class="card__footer">
+                <span>Download</span>
+                </span>
+            </div>
+            <div style="width: 100%;">
+                <span class="card__action">
+                <svg viewBox="0 0 448 512" title="play">
+                    <path d="M12 4v8H8.828l3.586 3.586L13 17l-5-5l5-5l1.414 1.414L8.828 12H12z"/>
+                </svg>
+                </span>
+            </div>
+        </div>
+        </div>
+      </a>
+    <script src="../static/js/jquery.min.js"></script>
+
+    <script>
+        const value = document.querySelector("#value");
+        const input = document.querySelector("#cowbell");
+        value.textContent = input.value;
+        input.addEventListener("input", (event) => {
+        value.textContent = event.target.value;
+        });
+        let gen = localStorage.getItem("generating")
+        $("#final_presentation").css("display", "none");
+        if (gen =="true"){
+          
+          $('#name_input').attr("disabled", true);
+          $('#topic_input').attr("disabled", true);
+          $('#cowbell').attr("disabled", true);
+          $('#topic_input').attr("value",localStorage.getItem("topic"));
+          $('#name_input').attr("value",localStorage.getItem("name"));
+          $('#cowbell').attr("value",localStorage.getItem("slides"));
+          
+
+          const value = document.querySelector("#value");
+          const input = document.querySelector("#cowbell");
+          value.textContent = input.value;
+          value.textContent = localStorage.getItem("slides")
+
+          $("#generate").css("display", "none");
+          $("#loadingg").css("display", "block");
+        }
+        else{
+          $('#cowbell').attr("disabled", false);
+          $('#name_input').attr("disabled", false);
+          $('#topic_input').attr("disabled", false);
+
+          $("#generate").css("display", "block");
+          $("#loadingg").css("display", "none");
+        }
+    </script>
+    <script>
+      
+
+      $( "#generate" ).on( "click", function() {
+        var topic = document.getElementById('topic_input').value;
+        var username = document.getElementById('name_input').value;
+        var slides = $('#cowbell').val()
+        // $(document).ready(function() {
+          
+        // });
+        var color_theme = $('input[name="contact"]:checked').val();
+        console.log(color_theme);
+
+        if (topic=="" || username==""){
+          alert("Please fill in all fields")
+        }
+
+        else{
+          localStorage.setItem("generating", "true")
+          localStorage.setItem("topic", $('#topic_input').val())
+          localStorage.setItem("slides", $('#cowbell').val())
+          localStorage.setItem("name", $('#name_input').val())
+          $('#topic_input').attr("disabled", true);
+          $('#name_input').attr("disabled", true);
+
+          const value = document.querySelector("#value");
+          const input = document.querySelector("#cowbell");
+          value.textContent = input.value;
+          input.addEventListener("input", (event) => {
+          value.textContent = event.target.value;
+          });
+          let gen = localStorage.getItem("generating")
+          if (gen =="true"){
+            
+            $('#name_input').attr("disabled", true);
+            $('#topic_input').attr("disabled", true);
+            $('#cowbell').attr("disabled", true);
+            $('#topic_input').attr("value",localStorage.getItem("topic"));
+            $('#name_input').attr("value",localStorage.getItem("name"));
+            $('#cowbell').attr("value",localStorage.getItem("slides"));
+            
+
+            const value = document.querySelector("#value");
+            const input = document.querySelector("#cowbell");
+            value.textContent = input.value;
+            value.textContent = localStorage.getItem("slides")
+
+            $("#generate").css("display", "none");
+            $("#loadingg").css("display", "block");
+          }
+          else{
+            $('#cowbell').attr("disabled", false);
+            $('#name_input').attr("disabled", false);
+            $('#topic_input').attr("disabled", false);
+
+            $("#generate").css("display", "block");
+            $("#loadingg").css("display", "none");
+          }
+
+                fetch('/create', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({topic: topic,
+              username:username,
+              slides:slides,
+              'color_theme':color_theme})
+          })
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(data) {
+            if (data.error){
+              alert(data.error)
+              localStorage.setItem("generating", "false")
+              $('#cowbell').attr("disabled", false);
+              $('#name_input').attr("disabled", false);
+              $('#topic_input').attr("disabled", false);
+
+              $("#generate").css("display", "block");
+              $("#loadingg").css("display", "none");
+            }
+            //console.log(data.path_to_download);
+            else{
+              localStorage.setItem("generating", "false")
+              $("#loadingg").css("display", "none");
+              $("#final_presentation").css("display", "block");
+              $('#card__img').attr('src', data.preview)
+              $('#download_presentation').attr('href', data.path_to_download)
+            }
+
+          })
+          .catch(function(error) {
+            localStorage.setItem("generating", "false")
+            console.error('Error:', error);
+          });
+        }
+          
+          
+        } )
+    </script>
+    <script src="../static/js/popper.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+Metadata-Version: 2.1
+Name: baseten
+Version: 0.8.1
+Summary: Deploy machine learning models to Baseten
+Keywords: MLOps,AI,Model Serving,Model Deployment,Machine Learning
+Author: Amir Haghighat
+Author-email: amir@baseten.co
+Requires-Python: >=3.8,<3.12
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: Pillow (>=9.3.0,<10.0.0)
+Requires-Dist: boto3 (>=1.26.0)
+Requires-Dist: click (>=7.0)
+Requires-Dist: colorama (>=0.4.3)
+Requires-Dist: coolname (>=1.1.0)
+Requires-Dist: halo (>=0.0.31,<0.0.32)
+Requires-Dist: jinja2 (>=2.10.3)
+Requires-Dist: joblib (>=0.12.5)
+Requires-Dist: pytz (>=2022.7.1,<2023.0.0)
+Requires-Dist: pyyaml (>=5.1)
+Requires-Dist: requests (>=2.22)
+Requires-Dist: requests-toolbelt (>=0.9.1,<0.10.0)
+Requires-Dist: semantic-version (>=2.10.0,<3.0.0)
+Requires-Dist: single-source (>=0.3.0,<0.4.0)
+Requires-Dist: tenacity (>=8.0.1,<9.0.0)
+Requires-Dist: tqdm (>=4.62.1,<5.0.0)
+Requires-Dist: truss (>=0.6.0,<0.7.0)
+Requires-Dist: types-pillow (>=9.3.0.4,<10.0.0.0)
+Requires-Dist: types-pytz (>=2022.7.1.0,<2023.0.0.0)
+Requires-Dist: types-pyyaml (>=6.0.12.2,<7.0.0.0)
+Requires-Dist: types-requests (>=2.28.11.7,<3.0.0.0)
+Requires-Dist: types-setuptools (>=65.6.0.2,<66.0.0.0)
+Project-URL: Documentation, https://docs.baseten.co
+Project-URL: Homepage, https://baseten.co
+Project-URL: Truss, https://truss.baseten.co
+Description-Content-Type: text/markdown
+
+# Baseten
+
+This is the Python client for [Baseten](https://baseten.co) and [Blueprint](https://blueprint.baseten.co).
+
+## Installation
+
+Install the latest version of the `baseten` package:
+
+```sh
+pip install --upgrade baseten
+```
+
+## Baseten
+
+Baseten is a hosted platform for building ML-powered applications. Build apps with auto-scaling, GPU access, CRON jobs, and serverless functions.
+
+Visit our official documentation for Baseten at [docs.baseten.co](https://docs.baseten.co).
+
+## Blueprint
+
+Blueprint is the model fine-tuning and serving infrastructure for developers. It's powered by Baseten infrastructure and uses the baseten PyPi package.
+
+Visit our official documentation for Blueprint at [docs.blueprint.baseten.co](https://docs.blueprint.baseten.co).
